@@ -43,7 +43,7 @@ response
     "city_count": 13,
     "gateway_count": 300,
     "gateway_online_count": 290,
-    "online_percent": "96.0%"
+    "online_percent": 96.0
 }
 ```
 
@@ -56,13 +56,12 @@ request
 ```
 {
     "filter": {
-        "object_type": "GATEWAY",
         "gateway_id": 10
     }
 }
 ```
 
-> object_type 包含两种类型，GATEWAY SENSOR 分别表示网关和传感器，首页上不用传 filter 字段 \
+> 首页上不用传 filter 字段 \
 > 如果指定gateway_id 那么就只返回这个网关的告警信息，这个在网关设备页面会使用到
 
 response
@@ -130,7 +129,7 @@ response
         "kuangshan":, 30 //金属非金属企业
     },
     "gateway_online_count": 80,
-    "gateway_online_percent": "80.0%"
+    "gateway_online_percent": 80.0
 }
 ```
 >  企业类型目前只有4中。web页面上应该显示其对应的中文
@@ -173,11 +172,17 @@ request
 ```
 {
     "filter": {
-        "city_id": 1, // 可填可不填
+        "city_id": 1, // 
+        "enterprise_type": "meikuang" //
     },
     "input": "水厂"
 }
 ```
+>  meikuang 煤矿企业\
+>  yanhuabaozhu 烟花爆竹企业\
+>  weihuapin  危化品企业\
+>  kuangshan 金属非金属企业
+
 
 response
 ```
@@ -339,8 +344,7 @@ response
 ```
 
 ## 报警信息
-> 复用首页的告警信息接口, 需要在filter中传入相应的 object_type = GATEWAY \
-> 但是这里的报警信息，只显示网关设备状态的告警信息，不显示数据告警信息。
+> 但是这里的报警信息，只显示选中的网关设备的报警统计信息
 
 ## 网关设备列表
 **url: /api/v1/gateway/gateway-list/**
@@ -506,7 +510,7 @@ response
 {
     "total_count": 1000,
     "grid": [
-        {
+    {
             "alarm_id": 100,
             "level": "EMERGENCY",
             "enterprise_name": "xxxxxx",
