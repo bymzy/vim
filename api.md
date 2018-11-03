@@ -247,7 +247,8 @@ request
         "page_size": 10,
         "page_number": 1,
         "enterprise_name": "襄阳华润"
-    }
+    },
+    "city_id": 1
 }
 
 response
@@ -303,7 +304,9 @@ request
         "page_size": 10,
         "page_number": 1,
         "gateway_name": "机房网关" //模糊匹配的gateway
-    }
+    },
+    "city_id":1,
+    "enterprise_id": 2
 }
 ```
 
