@@ -43,7 +43,7 @@ response
     "city_count": 13,
     "gateway_count": 300,
     "gateway_online_count": 290,
-    "online_percent": 96.0
+    "gateway_online_percent": 96.0
 }
 ```
 
@@ -287,7 +287,7 @@ response
     "join_time": "2018-10-10 10:10:10", 
     "gateway_count": 10,
     "gateway_online_count": 3,
-    "gateway_online_percent": "80.8%"
+    "gateway_online_percent": 80
 }
 ```
 
@@ -339,7 +339,7 @@ response
     "enterprise_count": 95,
     "gateway_count": 123,
     "gateway_online_count": 95
-    "online_percent": 77
+    "gateway_online_percent": 77
 }
 ```
 
@@ -406,7 +406,7 @@ response
 
 
 ## 启用，禁用网关
-**url: /api/v1/gateway/**
+**url: /api/v1/gateway/status/**
 
 POST
 
@@ -526,7 +526,7 @@ response
 ```
 
 ## 忽略报警,解决报警
-**url: /api/v1/alarm/**
+**url: /api/v1/alarm/status/**
 
 POST
 
