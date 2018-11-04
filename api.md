@@ -451,7 +451,6 @@ POST
 request
 ```
 {
-    "city_id": 1,
     "enterprise_id": 200,
     "gateway_name": "xxx",
 }
@@ -495,7 +494,7 @@ request
         "page_size": 10,
         "page_number": 1,
         "level": "EMERGENCY", 
-        "object": "GATEWAY"
+        "object": "GATEWAY",
         "city_id": 1,
         "status": "NOT_HANDLED",
         "begin_time": "2018-10-01",
