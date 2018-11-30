@@ -40,6 +40,8 @@
 # 通用
 除登陆请求外的其他请求，应当在 request的header中设置 x-auth-token 字段，其值为登陆请求返回的token。 登陆请求会在response的header x-auth-token 中设置。
 
+API前缀  /apis/
+
 # 首页
 ## 地图
 **url: /api/v1/homepage/map/**
