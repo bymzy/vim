@@ -42,6 +42,14 @@
 
 API前缀  /apis/
 
+企业类型现在有6种
+>工商贸企业
+>烟花爆竹企业
+>其他企业
+>易制毒企业
+>非煤矿山企业
+>危险化学品企业
+
 # 首页
 ## 地图
 **url: /api/v1/homepage/map/**
@@ -52,7 +60,7 @@ POST
 request
 ```
 {
-    "city_id": 1
+    "city_id": "201"
 }
 ```
 
@@ -66,6 +74,7 @@ response
     "gateway_offline_count": 10
 }
 ```
+> CHANGE city_id 变成了字符串
 
 ## 湖北省详情
 **url: /api/v1/homepage/prov-details/**
@@ -119,7 +128,7 @@ GET
 
 request
 
-response
+旧的返回 response
 ```
 {
     "connected_city": 10,
@@ -145,6 +154,108 @@ response
 }
 ```
 
+```
+{
+    "connected_enterprise": 66640,
+    "connected_city": 17,
+    "grid": [
+        {
+            "connected_enterprise": 2991,
+            "percent": 4,
+            "city_name": "黄石市"
+        },
+        {
+            "connected_enterprise": 6386,
+            "percent": 9,
+            "city_name": "襄阳市"
+        },
+        {
+            "connected_enterprise": 25167,
+            "percent": 37,
+            "city_name": "武汉市"
+        },
+        {
+            "connected_enterprise": 2722,
+            "percent": 4,
+            "city_name": "十堰市"
+        },
+        {
+            "connected_enterprise": 5254,
+            "percent": 7,
+            "city_name": "宜昌市"
+        },
+        {
+            "connected_enterprise": 1186,
+            "percent": 1,
+            "city_name": "随州市"
+        },
+        {
+            "connected_enterprise": 2001,
+            "percent": 3,
+            "city_name": "咸宁市"
+        },
+        {
+            "connected_enterprise": 625,
+            "percent": 0,
+            "city_name": "仙桃市"
+        },
+        {
+            "connected_enterprise": 2642,
+            "percent": 3,
+            "city_name": "孝感市"
+        },
+        {
+            "connected_enterprise": 8724,
+            "percent": 13,
+            "city_name": "荆州市"
+        },
+        {
+            "connected_enterprise": 2452,
+            "percent": 3,
+            "city_name": "黄冈市"
+        },
+        {
+            "connected_enterprise": 2384,
+            "percent": 3,
+            "city_name": "荆门市"
+        },
+        {
+            "connected_enterprise": 1705,
+            "percent": 2,
+            "city_name": "恩施州"
+        },
+        {
+            "connected_enterprise": 105,
+            "percent": 0,
+            "city_name": "神农架林区"
+        },
+        {
+            "connected_enterprise": 603,
+            "percent": 0,
+            "city_name": "天门市"
+        },
+        {
+            "connected_enterprise": 587,
+            "percent": 0,
+            "city_name": "潜江市"
+        },
+        {
+            "connected_enterprise": 1106,
+            "percent": 1,
+            "city_name": "鄂州市"
+        }
+    ],
+    "enterprise_type": {
+        "危险化学品企业": 1873,
+        "其他企业": 32748,
+        "烟花爆竹企业": 1078,
+        "非煤矿山企业": 1337,
+        "工商贸企业": 29604
+    }
+}
+```
+ > CHANGE 新的返回 Response，主要在于enterprise_type 中直接返回中文，直接用来显示就行
+
 ## 城市详情
 **url: /api/v1/homepage/city-statistic/**
 
@@ -153,9 +264,10 @@ POST
 request
 ```
 {
-    "city_id": 1
+    "city_id": "201"
 }
 ```
+> CHANGE 发送的id变成了字符串
 
 response
 ```
@@ -185,16 +297,17 @@ response
 {
     "grid": [
         {
-            "city_id": 1,
+            "city_id": '201',
             "city_name": "武汉市"
         },
         {
-            "city_id": 2,
+            "city_id": '202',
             "city_name": "黄石市"
         } 
     ]
 }
 ```
+> 与之前的变化在于，city_id 返回的是字符串，之前返回的是整形
 
 # 总览
 > 树形图上方的企业搜索接口,可模糊匹配企业名，然后跳转到指定的企业页面
@@ -211,17 +324,20 @@ request
 ```
 {
     "filter": {
-        "city_id": 1, // 
-        "enterprise_type": "meikuang" //
+        "city_id": "201", // 
+        "enterprise_type": "" //
     },
     "input": "水厂"
 }
 ```
->  meikuang 煤矿企业\
->  yanhuabaozhu 烟花爆竹企业\
->  weihuapin  危化品企业\
->  kuangshan 金属非金属企业
-
+>企业类型现在有6种：
+>工商贸企业
+>烟花爆竹企业
+>其他企业
+>易制毒企业
+>非煤矿山企业
+>危险化学品企业
+> CHANGE city_id 现在是字符串了
 
 response
 ```
@@ -262,7 +378,7 @@ response
     "grid": [
         {
             "city_name": "武汉市",
-            "city_id": 1,
+            "city_id": "1",
             "connected_enterprise": 100,
             "gateway_count": 100,
             "gateway_online_count": 30,
@@ -271,6 +387,7 @@ response
     ]
 }
 ```
+> CHANGE city_id 返回字符串了
 
 ## 城市详情
 与首页上的城市详情返回的数据一致
@@ -287,8 +404,9 @@ request
         "page_number": 1,
         "enterprise_name": "襄阳华润"
     },
-    "city_id": 1
+    "city_id": "201"
 }
+> CHANGE city_id 变成了字符串
 
 response
 ```
@@ -297,7 +415,7 @@ response
     "grid": [
         {
             "enterprise_name": "襄阳华润燃气",
-            "enterprise_id": 200,
+            "enterprise_id": "fad5fc11202911e8b21700ff3c1702d7",
             "type": "危化品企业",
             "gateway_count": 10,
             "gateway_online_count": 3,
@@ -306,6 +424,7 @@ response
     ]
 }
 ```
+> CHANGE 企业id变成了字符串
 
 ## 企业详情
 **url: /api/v1/overview/enterprise/**
@@ -315,9 +434,10 @@ POST
 request
 ```
 {
-    "enterprise_id": 200
+    "enterprise_id": "fa48b550202911e8b21700ff3c1702d7"
 }
 ```
+> CHANGE 企业ID变成了字符串
 
 response
 ```
@@ -344,10 +464,11 @@ request
         "page_number": 1,
         "gateway_name": "机房网关" //模糊匹配的gateway
     },
-    "city_id":1,
-    "enterprise_id": 2
+    "city_id": "202",
+    "enterprise_id": "fa48b550202911e8b21700ff3c1702d7"
 }
 ```
+>CHANGE city_id, enterprise_id 现在都是字符串
 
 response
 ```
@@ -399,12 +520,13 @@ request
     "filter": {
         "page_size": 10,
         "page_number": 3,
-        "city_id": 1,
+        "city_id": "201",
         "gateway_status": "RUNNING",
         "gateway_name_or_enterprise_name": "襄阳" // 支持输入网关名和城市名
     }
 }
 ```
+> CHANGE city_id 变成了字符串
 
 response
 ```
@@ -474,12 +596,13 @@ request
 ```
 {
     "city_id": 1 ,
-    "enterprise_id": 100,
+    "enterprise_id": "fa48b550202911e8b21700ff3c1702d7",
     "manufacturer": "华为",
     "desc": "机房西北角",
     "gateway_name": "网关1",
 }
 ```
+> CHANGE enterprise_id 变成字符串
 
 response
 
@@ -491,10 +614,11 @@ POST
 request
 ```
 {
-    "enterprise_id": 200,
+    "enterprise_id": "fa48b550202911e8b21700ff3c1702d7",
     "gateway_name": "xxx",
 }
 ```
+> CHANGE enterprise_id 变成字符串
 
 response
 ```
@@ -535,13 +659,14 @@ request
         "page_number": 1,
         "level": "EMERGENCY", 
         "object": "GATEWAY",
-        "city_id": 1,
+        "city_id": "201",
         "status": "NOT_HANDLED",
         "begin_time": "2018-10-01",
         "end_time": "2018-10-03"
     }
 }
 ```
+> CHANGE city_id变成了字符串
 
 > level 字段包括 EMERGENCY IMPORTANT NORMAL 3中级别。填空表示返回级别的告警信息\
 > object 字段包括 GATEWAY SENSOR \
