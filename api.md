@@ -6,6 +6,7 @@
     - [湖北省详情](#湖北省详情)
     - [系统告警统计](#系统告警统计)
     - [湖北省概览信息](#湖北省概览信息)
+    - [城市企业，网关分布](#城市企业网关分布)
     - [城市详情](#城市详情)
     - [城市列表](#城市列表)
 - [总览](#总览)
@@ -91,7 +92,8 @@ response
     "city_count": 13,
     "gateway_count": 300,
     "gateway_online_count": 290,
-    "gateway_online_percent": 96.0
+    "gateway_online_percent": 96.0,
+    "enterprise_count": 66640,
 }
 ```
 
@@ -256,6 +258,121 @@ request
 ```
  > CHANGE 新的返回 Response，主要在于enterprise_type 中直接返回中文，直接用来显示就行
 
+
+## 城市企业，网关分布
+**url: /api/v1/homepage/city-enterprise-dist/**
+
+GET
+
+response
+```
+[
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "武汉市",
+        "enterprise_count": 25167
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "神农架林区",
+        "enterprise_count": 105
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "十堰市",
+        "enterprise_count": 2722
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 1,
+        "name": "黄石市",
+        "enterprise_count": 2991
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "随州市",
+        "enterprise_count": 1186
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "宜昌市",
+        "enterprise_count": 5254
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "黄冈市",
+        "enterprise_count": 2452
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "咸宁市",
+        "enterprise_count": 2001
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "荆州市",
+        "enterprise_count": 8724
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "孝感市",
+        "enterprise_count": 2642
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "鄂州市",
+        "enterprise_count": 1106
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "仙桃市",
+        "enterprise_count": 625
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "潜江市",
+        "enterprise_count": 587
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "天门市",
+        "enterprise_count": 603
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "荆门市",
+        "enterprise_count": 2384
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "襄阳市",
+        "enterprise_count": 6386
+    },
+    {
+        "normal_rate": 0,
+        "gateway_count": 0,
+        "name": "恩施州",
+        "enterprise_count": 1705
+    }
+]
+
+```
+
 ## 城市详情
 **url: /api/v1/homepage/city-statistic/**
 
@@ -274,10 +391,11 @@ response
 {
     "connected_enterprise": 100,
     "enterprise_type": {
-        "meikuang": 3, //煤矿企业
-        "yanhuabaozhu": 50, //烟花爆竹企业
-        "weihuapin":  17, //危化品企业
-        "kuangshan":, 30 //金属非金属企业
+        "危险化学品企业": 1873,
+        "其他企业": 32748,
+        "烟花爆竹企业": 1078,
+        "非煤矿山企业": 1337,
+        "工商贸企业": 29604
     },
     "gateway_online_count": 80,
     "gateway_online_percent": 80.0
