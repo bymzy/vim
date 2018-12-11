@@ -3,6 +3,7 @@
 - [通用](#通用)
 - [首页](#首页)
     - [地图](#地图)
+    - [地图所有城市信息](#地图所有城市信息)
     - [湖北省详情](#湖北省详情)
     - [系统告警统计](#系统告警统计)
     - [湖北省概览信息](#湖北省概览信息)
@@ -77,6 +78,120 @@ response
 ```
 > CHANGE city_id 变成了字符串
 
+## 地图所有城市信息
+** url: /api/v1/homepage/map-all/ **
+
+> GET
+
+response
+
+```
+{
+	"grid": [{
+		"city_name": "武汉市",
+		"connected_enterprise": 0,
+		"gateway_count": 0,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 0
+	}, {
+		"city_name": "黄石市",
+		"connected_enterprise": 0,
+		"gateway_count": 0,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 0
+	}, {
+		"city_name": "十堰市",
+		"connected_enterprise": 0,
+		"gateway_count": 0,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 0
+	}, {
+		"city_name": "宜昌市",
+		"connected_enterprise": 0,
+		"gateway_count": 0,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 0
+	}, {
+		"city_name": "襄阳市",
+		"connected_enterprise": 3,
+		"gateway_count": 3,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 3
+	}, {
+		"city_name": "鄂州市",
+		"connected_enterprise": 0,
+		"gateway_count": 0,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 0
+	}, {
+		"city_name": "荆门市",
+		"connected_enterprise": 0,
+		"gateway_count": 0,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 0
+	}, {
+		"city_name": "孝感市",
+		"connected_enterprise": 1,
+		"gateway_count": 1,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 1
+	}, {
+		"city_name": "荆州市",
+		"connected_enterprise": 0,
+		"gateway_count": 0,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 0
+	}, {
+		"city_name": "黄冈市",
+		"connected_enterprise": 2,
+		"gateway_count": 2,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 2
+	}, {
+		"city_name": "咸宁市",
+		"connected_enterprise": 0,
+		"gateway_count": 0,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 0
+	}, {
+		"city_name": "随州市",
+		"connected_enterprise": 5,
+		"gateway_count": 5,
+		"gateway_online_count": 2,
+		"gateway_offline_count": 3
+	}, {
+		"city_name": "恩施州",
+		"connected_enterprise": 0,
+		"gateway_count": 0,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 0
+	}, {
+		"city_name": "仙桃市",
+		"connected_enterprise": 0,
+		"gateway_count": 0,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 0
+	}, {
+		"city_name": "潜江市",
+		"connected_enterprise": 0,
+		"gateway_count": 0,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 0
+	}, {
+		"city_name": "天门市",
+		"connected_enterprise": 0,
+		"gateway_count": 0,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 0
+	}, {
+		"city_name": "神农架林区",
+		"connected_enterprise": 0,
+		"gateway_count": 0,
+		"gateway_online_count": 0,
+		"gateway_offline_count": 0
+	}]
+}
+```
 ## 湖北省详情
 **url: /api/v1/homepage/prov-details/**
 
@@ -248,7 +363,7 @@ request
         }
     ],
     "enterprise_type": {
-        "危险化学品企业": 1873,
+        "危险化学品企业": 187,
         "其他企业": 32748,
         "烟花爆竹企业": 1078,
         "非煤矿山企业": 1337,
