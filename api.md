@@ -17,6 +17,7 @@
     - [城市安全生产](#城市安全生产)
     - [企业详情](#企业详情)
     - [企业网关设备](#企业网关设备)
+    - [企业传感器列表](#企业传感器列表)
 - [网关设备](#网关设备)
     - [网关设备监控状态](#网关设备监控状态)
     - [报警信息](#报警信息)
@@ -26,6 +27,11 @@
     - [添加网关](#添加网关)
     - [检测网关名是否合法（网关名需要在一个企业内部是唯一的）](#检测网关名是否合法网关名需要在一个企业内部是唯一的)
     - [移除网关](#移除网关)
+    - [获取视频企业城市列表](#获取视频企业城市列表)
+    - [预测视频企业名](#预测视频企业名)
+    - [获取视频任务列表](#获取视频任务列表)
+- [获取企业视频区域](#获取企业视频区域)
+- [添加视频任务](#添加视频任务)
 - [报警信息](#报警信息-1)
     - [报警信息列表](#报警信息列表)
     - [忽略报警,解决报警](#忽略报警解决报警)
@@ -717,6 +723,42 @@ response
 }
 ```
 
+## 企业传感器列表
+**url: /api/v1/overview/sensor-list/**
+
+POST
+
+request
+```
+{
+	"filter": {
+		"page_size": 2,
+		"page_number": 1
+	},
+	"enterprise_id": "07fe823b150246469a8e2ec9633c05e3",
+	"sensor_status": "",
+	"gateway_id": ""
+}
+```
+
+response
+```
+{
+    "total_count": 1,
+    "grid": [
+        {
+            "device_unit": "C",
+            "device_name": "丙烯储罐1温度",
+            "upper_limit": "300.0",
+            "lower_limit": "100.0",
+            "device_type": "温度",
+            "current_value": "",
+            "device_id": "XYJHSWKJ_/dev/ttyS0_1_10"
+        }
+    ]
+}
+```
+
 
 # 网关设备
 
@@ -877,6 +919,184 @@ request
 ```
 
 response
+
+
+## 获取视频企业城市列表
+**url: /api/v1/gateway/video-city-list/**
+
+GET
+
+request
+
+response
+```
+{
+    "grid": [
+        {
+            "city_id": "b78433c8-e57c-4259-a9f5-40c528016628",
+            "city_name": "荆州市"
+        },
+        {
+            "city_id": "64254b91-f3bf-4559-8c6f-061570ea031e",
+            "city_name": "黄石市"
+        },
+        {
+            "city_id": "34d18ca7-975c-4fa6-8382-cd126d8ab90b",
+            "city_name": "襄阳市"
+        },
+        {
+            "city_id": "f5f2870e-c830-4c85-bc22-065ced9bfb50",
+            "city_name": "宜昌市"
+        },
+        {
+            "city_id": "76ad0f4d-97ac-432f-808b-baa39f54fe97",
+            "city_name": "十堰市"
+        },
+        {
+            "city_id": "d415d349-2509-476f-af42-379eac44e098",
+            "city_name": "鄂州市"
+        },
+        {
+            "city_id": "4ed3cd5f-a59f-4122-983f-5f784b67efad",
+            "city_name": "武汉市"
+        }
+    ]
+}
+```
+
+## 预测视频企业名
+**url: /api/v1/gateway/video-ent-predict/**
+
+POST
+
+request
+```
+{
+	"filter": {
+		"enterprise_type": "",
+		"city_id": ""
+	},
+	"input": "利拓"
+}
+```
+
+response
+```
+{
+    "grid": [
+        {
+            "city_id": "34d18ca7-975c-4fa6-8382-cd126d8ab90b",
+            "enterprise_id": "6b73b02e-9862-4aed-b49b-c6a1da242d87",
+            "enterprise_name": "湖北利拓B"
+        },
+        {
+            "city_id": "34d18ca7-975c-4fa6-8382-cd126d8ab90b",
+            "enterprise_id": "8701c280-bba0-4663-8dfe-67d3f7ff777b",
+            "enterprise_name": "湖北利拓A"
+        }
+    ]
+}
+
+```
+
+
+## 获取视频任务列表
+**url: /api/v1/gateway/video-task-list/**
+
+POST
+
+request
+```
+{
+    "filter": {
+        "page_size":5,
+        "page_number":1,
+        "task_status":"task_all"
+    }
+}
+```
+
+response
+```
+{
+    "total_count": 2,
+    "grid":[
+        {
+            "task_status":"task_running",
+            "task_priority":"high",
+            "enterprise":"hardstone",
+            "city":"wuhan",
+            "area":"1号气罐",
+            "task_description":"xxxx",
+            "task_operator":"xue"
+        },
+        {
+            "task_status":"task_done",
+            "task_priority":"high",
+            "enterprise":"hardstone",
+            "city":"wuhan",
+            "area":"1号气罐",
+            "task_description":"xxxx",
+            "task_operator":"xue"
+        }
+    ]
+}
+```
+
+# 获取企业视频区域
+**url: /api/v1/gateway/enterprise-video-area/**
+
+POST
+
+request
+```
+{
+	"enterprise_id":"6b73b02e-9862-4aed-b49b-c6a1da242d87"
+}
+```
+
+response
+```
+{
+    "grid": [
+        {
+            "region_id": "7ac0e3a6c5744deb8fc5766825d94d85",
+            "region_name": "7-球磨车间3"
+        },
+        {
+            "region_id": "5f3074fb98df43a6810ed143771a4b62",
+            "region_name": "11-磁选2"
+        },
+        {
+            "region_id": "a249db24112b406e98bc386e44f7ea3a",
+            "region_name": "5-球磨车间1"
+        }
+    ]
+}
+```
+
+# 添加视频任务
+**url: /api/v1/gateway/add-video-task/ **
+
+POST
+
+request
+```
+{
+    "enterprise_id":"100",
+    "region_id":"111",
+    "video_type":"lishi",
+    "begin_time":"2019-01-24T07:16:46.308Z",
+    "end_time":"2019-01-31T07:16:49.355Z"
+}
+```
+
+response
+```
+{
+}
+```
+
 
 # 报警信息
 ## 报警信息列表
